@@ -76,7 +76,7 @@ hoodie.clustering.updates.strategy=org.apache.hudi.client.clustering.update.stra
 
 ## 性能
 
-![image-20230404135312627](/Users/liurongtong/Library/Application Support/typora-user-images/image-20230404135312627.png)
+![image-20230404135312627](./img/image-20230404135312627.png)
 
 ## 代码实现原理
 
@@ -130,8 +130,17 @@ merge有两种方案，按照索引从中间拆分，按照实际数据量拆分
 
 
 
+# 2. 缺省字段补全
 
-# 2. MetaServer(EXPERIMENTAL)
+[JIRA](https://issues.apache.org/jira/browse/HUDI-4781)
+
+- [[HUDI-4781](https://issues.apache.org/jira/browse/HUDI-4781)] - Allow omit metadata fields for hive sync
+
+
+
+
+
+# 3. MetaServer(EXPERIMENTAL)
 
 ## 参考资料
 
@@ -202,3 +211,7 @@ Timeline contains instant and the metadata of each instant.
 
 
 可更换存储引擎，目前为Mysql
+
+
+
+## 4. 
