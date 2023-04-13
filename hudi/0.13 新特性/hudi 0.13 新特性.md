@@ -86,7 +86,8 @@ hoodie.clustering.updates.strategy=org.apache.hudi.client.clustering.update.stra
 
 ### 当成Clustring子任务
 
-使用clustering服务的功能，把Split/Merge 功能当成 Clustering 的子任务进行，所以才有之前的限制，必须开启clustring的功能![image-20230410144842425](/Users/liurongtong/Library/Application Support/typora-user-images/image-20230410144842425.png)
+使用clustering服务的功能，把Split/Merge 功能当成 Clustering 的子任务进行，所以才有之前的限制，必须开启clustring的功能
+![image-20230410144842425](./img/image-20230410144842425.png)
 
 
 
