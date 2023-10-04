@@ -172,7 +172,7 @@ spark.sql("select rowId, partitionId, preComb, name, versionId, intToLong, newFi
 
 上面第三步执行报错
 
-```yaml
+```shell
 <console>:56: error: value key is not a member of String
            option(PRECOMBINE_FIELD_OPT_KEY.key, "preComb").
                                            ^
@@ -210,8 +210,6 @@ dfFromData2.write.format("hudi").
     mode(Append).  
     save(basePath) 
 ```
-
-
 
 
 
