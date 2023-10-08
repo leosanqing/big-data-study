@@ -1,4 +1,6 @@
 # 前言
+Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-study
+
 
 官方介绍 https://hudi.apache.org/cn/docs/next/table_types
 
@@ -7,7 +9,6 @@ Hudi 有两种表 MOR 表和 COW 表.两种表对数据处理方式不同,
 先说下几个概念,如果想了解更多,可以看文件布局那一块的介绍: 
 
 - 基础文件(base file):  parquet 文件
-- 
 
 # 概念
 

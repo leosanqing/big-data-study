@@ -10,11 +10,13 @@
 
 # 前言
 
+Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-study
+
 索引(Index)是 Hudi 最重要的特性之一,也是区别于之前传统数仓 Hive 的重要特点, 是实现 Time Travel, Update/Delete,事务 等重要特性的基础
 
 Hudi provides efficient upserts, by mapping a given hoodie key (record key + partition path) consistently to a file id, via an indexing mechanism
 
-hudi 通过索引机制提供了高效的 upsert, 索引机制是通过映射 HoodieKey( recordKey+partition) 与 File Id 实现. 如果是非全局索引就不包括 partition
+Hudi 通过索引机制提供了高效的 upsert, 索引机制是通过映射 HoodieKey( recordKey+partition) 与 File Id 实现. 如果是非全局索引就不包括 partition
 
 # 作用
 
@@ -63,7 +65,7 @@ hive因为没有索引,所以他不支持变更操作(update/Delete),一次写�
   - `SIMPLE（默认）`：为每个分区的文件组使用固定数量的存储桶，无法缩小或扩展。这适用于 COW 和 MOR 表。由于存储桶的数量无法更改，并且存储桶和文件组之间采用一对一映射的设计，因此该索引可能不太适合高度倾斜的分区。
   - `CONSISTENT_HASHING`：支持动态数量的存储桶，并调整存储桶的大小以正确调整每个存储桶的大小。这解决了潜在的数据倾斜问题，即可以动态调整具有大量数据的分区的大小以具有合理大小的多个存储桶，这与 SIMPLE 存储桶引擎类型中每个分区的固定数量的存储桶不同。这仅适用于 MOR 表。
 - **RECORD_INDEX：** 将RecordKey保存到 HUDI 元数据表中的位置映射的索引。记录索引是全局索引，强制表中所有分区的键唯一性。支持分片以实现非常大的规模。
-- **自定义索引：** 你可以扩展这个[pulicAPI](https://github.com/apache/hudi/blob/master/hudi-client/hudi-client-common/src/main/java /org/apache/hudi/index/HoodieIndex.java) 来实现自定义索引。
+- **自定义索引：** 你可以扩展这个[publicAPI](https://github.com/apache/hudi/blob/master/hudi-client/hudi-client-common/src/main/java /org/apache/hudi/index/HoodieIndex.java) 来实现自定义索引。
 
 ## 全局索引
 
