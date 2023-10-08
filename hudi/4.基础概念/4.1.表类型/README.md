@@ -83,7 +83,7 @@ log 文件定期做了 compaction 之后就会合并为 parquet 文件
 
 
 
-## TimeTarvel
+## TimeTravel
 
 time travel 仅仅 spark 引擎可以用,Flink 无法使用
 
