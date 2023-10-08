@@ -81,4 +81,20 @@ log 文件定期做了 compaction 之后就会合并为 parquet 文件
 3. ReadOptimizedQuery: 读优化查询(这个是 MOR 特有的).因为 MOR 是 parquet+log 组成, parquet 是 compaction 优化之后的数据,所以读优化是只读取 parquet 文件,log 部分不读取.如果是一天做一次 compaction, 那么跟以前 T+1 的离线同步一样了
 4. TimeTravel: 时间旅行. 支持回溯数据的状态.假如一条数据, T1--> 1, T2 --> 2, T3 --> 3. 现在正常查询出来是 3, 但是我想要知道 T2 是啥样的, 只要设置参数参数后就可以 读取到 T2 时刻的值. 这个就是 TimeTravel(具体用法以及详细介绍可以看我的 TimeTravel 相关文章)
 
+
+
+## TimeTarvel
+
+time travel 仅仅 spark 引擎可以用,Flink 无法使用
+
+效果就类似于下面,我一共写了三次数数据 
+
+T0---> XXX, T1 -->xxx1, T2 ---> xxx2
+
+我想回溯 T1 时刻的数据
+
+![image-20231008162957444](./img/image-20231008162957444.png)
+
+![image-20231008162736924](./img/image-20231008162736924.png)
+
 如果什么都不设置,直接查询,默认就是**SnapshotQuery**
