@@ -20,12 +20,12 @@
 - ### 3.3. Hive 环境搭建
 
 ## 4. Apache Hudi 基础概念
-- ### 3.1. 表类型(COW/MOR)
-- ### 3.2. 索引(Index)
-- ### 3.3. 文件管理与存储布局(File Layout)
-- ### 3.4. 时间概念：提交时间、分区时间(Timeline)
-- ### 3.5. 写类型(Insert/Upsert/BulkInsert)
-- ### 3.6. Payload
+- ### 4.1. 表类型(COW/MOR)
+- ### 4.2. 索引(Index)
+- ### 4.3. 文件管理与存储布局(File Layout)
+- ### 4.4. 时间概念：提交时间、分区时间(Timeline)
+- ### 4.5. 写类型(Insert/Upsert/BulkInsert)
+- ### 4.6. Payload
 
 ## 5. Apache Hudi 主要特性
 - ### 5.1. Hudi 索引策略
