@@ -1,12 +1,3 @@
-# 问题
-
-1. 什么是索引
-2. 索引作用
-3. 有哪些索引
-4. 全局索引与非全局索引区别
-5. Flink 支持哪些索引
-
-
 
 # 前言
 
@@ -17,6 +8,15 @@ Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-st
 Hudi provides efficient upserts, by mapping a given hoodie key (record key + partition path) consistently to a file id, via an indexing mechanism
 
 Hudi 通过索引机制提供了高效的 upsert, 索引机制是通过映射 HoodieKey( recordKey+partition) 与 File Id 实现. 如果是非全局索引就不包括 partition
+
+
+# 问题
+
+1. 什么是索引
+2. 索引作用
+3. 有哪些索引
+4. 全局索引与非全局索引区别
+5. Flink 支持哪些索引
 
 # 作用
 
@@ -118,4 +118,4 @@ spark 除了 InMemory 其他都支持
    5. Simple
    6. Record
 4. 全局索引与非全局索引区别: 全局索引 相同的RecordKey 全局仅会有一个,全局唯一;非全局索引,由于分区,可以存在多个 相同的RecordKey,全局不唯一
-5. Flink 支持哪些索引: 目前仅有三种: FlinkState, Bucket(Simple, consistent_hash)
+5. Flink 支持哪些索引: 目前仅有三种: FlinkState, Bucket(Simple, consistent_hash)~~
