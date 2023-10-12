@@ -56,7 +56,7 @@ HDFS 上体现为
 
 ## Active
 
-顾名思义，一般表操作都是一直访问acive timeline，以在有效数据文件上提供元数据，并确保随着时间线的增长，时间线上的读取不会产生不必要的延迟，active timeline需要限制在它可以服务的元数据(metadata)（timeline instant）上。
+顾名思义，一般表操作都是一直访问active timeline，以在有效数据文件上提供元数据，并确保随着时间线的增长，时间线上的读取不会产生不必要的延迟，active timeline需要限制在它可以服务的元数据(metadata)（timeline instant）上。
 
 如果查看源码,就会发现基本所有的操作都会先获取一遍 activeTimeline
 
