@@ -25,7 +25,8 @@
 - ### 4.3. 文件管理与存储布局(File Layout)
 - ### 4.4. 时间概念：提交时间、分区时间(Timeline)
 - ### 4.5. 写类型(Insert/Upsert/BulkInsert)
-- ### 4.6. Payload
+- ### 4.6. 元数据表MetadataTable
+- ### 4.7. Payload
 
 ## 5. Apache Hudi 主要特性
 - ### 5.1. Hudi 索引策略
