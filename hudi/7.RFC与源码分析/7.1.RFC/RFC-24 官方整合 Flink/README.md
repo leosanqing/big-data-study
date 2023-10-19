@@ -1,6 +1,11 @@
+# 前言
+Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-study
+
+[官方 RFC-13 链接](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=141724520)
+
+[官方 RFC-24 链接](https://cwiki.apache.org/confluence/display/HUDI/RFC-24%3A+Hoodie+Flink+Writer+Proposal)
+
 # 问题
-
-
 
 从官方 RFC 的设计中,我们能找到以下几个问题的答案
 
@@ -14,10 +19,6 @@
 1. 状态是怎么设计的
 2. 为啥启动之后会有 BucketAssigner 算子
 3. 为啥启动之后,有的是 StreamWrite,有的是 BucketWrite
-
-[官方 RFC-13 链接](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=141724520)
-
-[官方 RFC-24 链接](https://cwiki.apache.org/confluence/display/HUDI/RFC-24%3A+Hoodie+Flink+Writer+Proposal)
 
 
 # 背景

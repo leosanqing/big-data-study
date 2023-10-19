@@ -1,6 +1,15 @@
 # 前言
 
+Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-study
+
+Hudi 官网的介绍 https://hudi.apache.org/cn/docs/next/metadata/
+
+Payload 是一个非常关键的步骤,决定了数据怎么去重合并等步骤
+
 # 问题
+
+1. Payload 是什么,在哪里起作用
+2. Payload 中的关键方法,作用是什么
 
 # 概念
 
@@ -229,3 +238,15 @@ Payload 需要关注的主要是上面三个方法
 
 
 更详细的参考 7.2.2 Payload 源码分析这里 
+
+
+
+# 总结
+
+1. Payload 是什么,在哪里起作用
+   1. Payload 决定了重复数据怎么处理
+   2. precombine, COW 表写入,MOR 表读取以及 compaction 阶段 会调用
+2. Payload 中的关键方法,作用是什么
+   1. preCombine: 同一批数据去重
+   2. combineAndGetUpdateValue MOR compaction 或者Read 的时候调用,COW 写入的时候调用
+   3. getOrderingValue 排序规则
