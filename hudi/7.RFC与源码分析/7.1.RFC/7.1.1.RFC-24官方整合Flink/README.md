@@ -559,6 +559,3 @@ insert 就找 bucketAssigner 询问他应该把这个新的数据插入到哪个
    1. StreamWrite 是 Flink 写入 Hudi 的算子, 定义了写入的方法,FlinkState Index 的任务会进入这个算子
    2. BucketWrite 算子继承了 StreaWrite 算子, 但是修改了分桶逻辑, 目前只有 BucketIndex 的任务进入这个算子
 
-
-
-# 
