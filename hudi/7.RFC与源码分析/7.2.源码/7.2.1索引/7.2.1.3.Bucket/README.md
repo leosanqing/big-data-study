@@ -136,7 +136,7 @@ public static DataStream<Object> hoodieStreamWrite(Configuration conf, DataStrea
 
 算子生成之后, 数据流入时,处理逻辑就在下面这里
 
-当真正调用通用写入方法, FlinkWriteCLient.upsert 流程, 我们能看到 instant 是 I 或者 U,以此来判断到底是新增还是更新的桶, 还有具体分到哪个桶里面,这个怎么来的
+当真正调用通用写入方法, FlinkWriteClient.upsert 流程, 我们能看到 instant 是 I 或者 U,以此来判断到底是新增还是更新的桶, 还有具体分到哪个桶里面,这个怎么来的
 
 ```java
 // org.apache.hudi.sink.bucket.BucketStreamWriteFunction#processElement

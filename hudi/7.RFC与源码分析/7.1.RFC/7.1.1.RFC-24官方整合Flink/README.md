@@ -58,7 +58,7 @@ Hudi 系列文章在这个这里查看 https://github.com/leosanqing/big-data-st
 
 从上面看就有几个重点了
 
-1. instant 由Flink corordinator 生成
+1. instant 由Flink coordinator 生成
 2. 拆分 WriteProcessOperator 算子,分为分桶和写入(为什么,主要解决并发写的时候效率问题,即第二个瓶颈)
 3. BucketWriter 是批次写入, 不再是实时写入
 
@@ -93,7 +93,7 @@ Firstly, we can avoid the singleton task operator InstantGeneratorOperator by im
 
 **注意**：函数任务要求输入流按照分区字段进行分区，以避免不同的写任务写入相同的文件组，从而造成冲突。分区路径的常见场景是一个日期字段，因此接收器任务很可能会遇到IO瓶颈。更灵活的解决方案是按文件组ID（在#step2中修复）对数据进行混洗(shuffle)。
 
-### Coorinator
+### Coordinator
 
 Flink的协调器（在新版本中称为Operator Coordinator）是用于管理操作的生命周期、维护操作状态和协调操作之间的交互的组件。特别是，在Flink中进行状态管理和故障恢复时，协调器扮演着至关重要的角色。
 
