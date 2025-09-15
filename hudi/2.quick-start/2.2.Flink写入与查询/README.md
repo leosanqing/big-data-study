@@ -4,6 +4,7 @@
 export HADOOP_CLASSPATH=`hadoop classpath`
 
 ### 
+./bin/yarn-session.sh -Denv.java.home=/usr/lib/jvm/java-17-openjdk-arm64 -jm 4G -nm rt_test -s 4 -tm 4G -d
 ./bin/yarn-session.sh -jm 4G -nm rt_test -s 4 -tm 4G -d
 ./bin/yarn-session.sh -yD env.java.opts="--add-opens java.base/java.lang=ALL-UNNAMED" -jm 4G -nm rt_test -s 4 -tm 4G -d
 
@@ -85,11 +86,109 @@ CREATE TABLE datagen_mor_0927_001 (
   'fields.partition.length' = '1'
 );
 
+CREATE TABLE print_tbl (
+  uuid VARCHAR(20),
+  name VARCHAR(10),
+  age INT,
+  ts TIMESTAMP(3),  
+  `partition` VARCHAR(20)
+) WITH (
+  'connector' = 'print'
+);
+
 
 INSERT INTO mor_0927_001
 SELECT uuid, name, age, ts, `partition`
-FROM datagen_mor_0927_001;
+FROM datagen_mor_ling0927_001;
 
+```
+
+
+
+## PG CDC
+
+```sql
+-- register a PostgreSQL table 'shipments' in Flink SQL
+drop table shipments;
+
+CREATE TABLE shipments
+(
+  id int,
+  name string,
+  primary key(id) not enforced
+) WITH (
+  'connector' = 'postgres-cdc',
+  'hostname' = '10.211.55.5',
+  'port' = '5432',
+  'username' = 'test',
+  'password' = '123456',
+  'database-name' = 'testdb',
+  'schema-name' = 'public',
+  'table-name' = 'tbl3',
+  'slot.name' = 'flink',
+'decoding.plugin.name'= 'pgoutput'
+   -- experimental feature: incremental snapshot (default off)
+  -- 'scan.incremental.snapshot.enabled' = 'true'
+);
+
+CREATE TABLE shipments
+(
+  id int,
+  name string,
+  primary key(id) not enforced
+) WITH (
+  'connector' = 'postgres-cdc',
+  'hostname' = '10.211.55.5',
+  'port' = '5432',
+  'username' = 'test',
+  'password' = '123456',
+  'database-name' = 'testdb',
+  'schema-name' = 'public',
+  'table-name' = 'tbl113',
+  'slot.name' = 'flink',
+  'debezium.snapshot.mode' = 'never',
+'decoding.plugin.name'= 'pgoutput'
+   -- experimental feature: incremental snapshot (default off)
+  -- 'scan.incremental.snapshot.enabled' = 'true'
+);
+
+CREATE TABLE shipments_print
+(
+  id int,
+  name string,
+  primary key(id) not enforced
+) WITH (
+  'connector' = 'print'
+);
+
+insert into shipments_print select * from shipments;
+
+CREATE TABLE tbl2
+(
+  id int,
+  name string,
+  primary key(id) not enforced
+) WITH (
+  'connector' = 'postgres-cdc',
+  'hostname' = '10.211.55.5',
+  'port' = '5432',
+  'username' = 'test',
+  'password' = '123456',
+  'database-name' = 'testdb',
+  'schema-name' = 'public',
+  'table-name' = 'tbl2',
+  'slot.name' = 'flink',
+  -- 'scan.startup.mode' = 'latest-offset',
+  -- 'debezium.snapshot.mode' = 'never',
+'decoding.plugin.name'= 'pgoutput',
+   -- experimental feature: incremental snapshot (default off)
+   'scan.incremental.snapshot.enabled' = 'true'
+  
+);
+SELECT * FROM tbl2;
+
+-- read snapshot and binlogs from shipments table
+SELECT * FROM shipments;
 ```
 
 
@@ -396,7 +495,6 @@ Hive-exec 缺少 依赖 ,jar 拷贝到 {FLINK_HOME}/lib
 
 ```shell
 zip -d /path/to/your.jar test/\*
-zip -d hive-exec-3.1.3.jar /com/google/\*
 ```
 
 ## 缺少依赖
